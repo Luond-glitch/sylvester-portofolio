@@ -408,9 +408,5 @@ footer {
         font-size: 2rem;
     }
 
-    .btn {
-        display: block;
-        margin: 10px auto;
-        width: 80%;
-    }
+   
 }
