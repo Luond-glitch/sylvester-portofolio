@@ -22,21 +22,30 @@
  });
 
  // Mobile menu toggle
- const hamburger = document.getElementById('hamburger');
- const navMenu = document.getElementById('nav-menu');
- 
- hamburger.addEventListener('click', function() {
-     hamburger.classList.toggle('active');
-     navMenu.classList.toggle('active');
- });
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
 
- // Close mobile menu when clicking a link
- document.querySelectorAll('.nav-link').forEach(link => {
-     link.addEventListener('click', function() {
-         hamburger.classList.remove('active');
-         navMenu.classList.remove('active');
-     });
- });
+hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    
+    // Toggle body scroll when menu is open
+    if (navMenu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Close mobile menu when clicking a link
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+});
 
  // Skill card hover effect
  const skillCards = document.querySelectorAll('.skill-card');
